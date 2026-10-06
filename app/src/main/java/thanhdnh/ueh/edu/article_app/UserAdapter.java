@@ -12,28 +12,28 @@ import com.squareup.picasso.Picasso;
 
 import java.util.ArrayList;
 
-public class ArticleAdapter extends BaseAdapter {
-  private ArrayList<Article> article_list;
+public class UserAdapter extends BaseAdapter {
+  private ArrayList<User> user_list;
   private Context context;
 
-  public ArticleAdapter(ArrayList<Article> article_list, Context context) {
-    this.article_list = article_list;
+  public UserAdapter(ArrayList<User> user_list, Context context) {
+    this.user_list = user_list;
     this.context = context;
   }
 
   @Override
   public int getCount() {
-    return article_list.size();
+    return user_list.size();
   }
 
   @Override
   public Object getItem(int position) {
-    return article_list.get(position);
+    return user_list.get(position);
   }
 
   @Override
   public long getItemId(int position) {
-    return article_list.get(position).getArticle_id();
+    return position;
   }
 
   @Override
@@ -50,8 +50,18 @@ public class ArticleAdapter extends BaseAdapter {
       dataitem = (MyView) convertView.getTag();
     }
 
-    Picasso.get().load(article_list.get(position).getArticle_image()).resize(300, 400).centerCrop().into(dataitem.iv_photo);
-    dataitem.tv_caption.setText(article_list.get(position).getArticle_title());
+    User user = user_list.get(position);
+
+    if (user.getUrl_profile() != null && !user.getUrl_profile().isEmpty()) {
+      Picasso.get()
+              .load(user.getUrl_profile())
+              .resize(300, 400)
+              .centerCrop()
+              .into(dataitem.iv_photo);
+    }
+
+    dataitem.tv_caption.setText(user.getUname() + "\n" + user.getShort_bio());
+
     return convertView;
   }
 

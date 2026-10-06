@@ -13,35 +13,44 @@ import java.lang.reflect.Type;
 import java.util.concurrent.ExecutorService;
 import java.util.concurrent.Executors;
 
-public class ArticleData {
-  public static ArticleList data;
+public class UserData {
+  public static UserList data;
   private Context context;
   private GridView gridview;
   private final ExecutorService executor = Executors.newSingleThreadExecutor();
 
-  public ArticleData(Context context, GridView gridview) {
+  public UserData(Context context, GridView gridview) {
     this.context = context;
     this.gridview = gridview;
   }
 
-  public static Article getPhotoFromId(int id) {
-    for (int i = 0; i < data.getArticles().size(); i++)
-      if (data.getArticles().get(i).getArticle_id() == id)
-        return data.getArticles().get(i);
+  public static User getUserFromId(String id) {
+    if (data != null && data.getUsers() != null) {
+      for (int i = 0; i < data.getUsers().size(); i++) {
+        if (data.getUsers().get(i).getId().equals(id)) {
+          return data.getUsers().get(i);
+        }
+      }
+    }
     return null;
   }
 
   public void loadData(String url, Activity activity){
-      executor.execute(()->{
-          File file = Downloader.downloadFile(url, context.getCacheDir());
-          if(file!=null)
-            activity.runOnUiThread(()->{
-              Gson gson = new Gson();
-              data = gson.fromJson(readText(file), (Type) ArticleList.class);
-              ArticleAdapter adapter = new ArticleAdapter(data.getArticles(), context);
-              gridview.setAdapter(adapter);
-            });
+    executor.execute(()->{
+      File file = Downloader.downloadFile(url, context.getCacheDir());
+      if(file != null)
+        activity.runOnUiThread(()->{
+          Gson gson = new Gson();
+          // Parse JSON thành UserList
+          data = gson.fromJson(readText(file), (Type) UserList.class);
+
+          if (data != null && data.getUsers() != null) {
+            // Truyền danh sách User vào UserAdapter
+            UserAdapter adapter = new UserAdapter(data.getUsers(), context);
+            gridview.setAdapter(adapter);
+          }
         });
+    });
   }
 
   public String readText(File file){
@@ -57,8 +66,7 @@ public class ArticleData {
       return buffer.toString();
     } catch (Exception e) {
       e.printStackTrace();
-    } finally {
     }
-    return reader.toString();
+    return "";
   }
 }

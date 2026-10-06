@@ -23,5 +23,9 @@
     android:paddingBottom="10sp"
     android:text="Caption"
     android:textColor="@color/white"
-    android:textSize="18sp" />
+    android:textSize="18sp"
+      android:maxLines="2"
+      android:ellipsize="end"/>
+
+
 </LinearLayout>
