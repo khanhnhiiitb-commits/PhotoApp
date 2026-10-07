@@ -1,0 +1,48 @@
+{
+  "users": [
+    {
+      "id": 1,
+      "uname": "Nguyen Thi B",
+      "password": "123456",
+      "url_profile": "https://betapto.edu.vn/upload/2025/08/avatar-nguoi-la-03.webp",
+      "short_bio": "Android Developer"
+    },
+    {
+      "id": 2,
+      "uname": "Tran Thi B",
+      "password": "123456",
+      "url_profile": "https://betapto.edu.vn/upload/2025/08/avatar-nguoi-la-02.webp",
+      "short_bio": "Mobile Developer"
+    },
+    {
+      "id": 3,
+      "uname": "Hong Thi C",
+      "password": "123456",
+      "url_profile": "https://betapto.edu.vn/upload/2025/08/avatar-nguoi-la-02.webp",
+      "short_bio": "Web Developer"
+    },
+    {
+      "id": 4,
+      "uname": "Huynh Thi D",
+      "password": "123456",
+      "url_profile": "https://betapto.edu.vn/upload/2025/08/avatar-nguoi-la-02.webp",
+      "short_bio": "Software Developer"
+    },
+    {
+      "id": 5,
+      "uname": "Nguyen Van E",
+      "password": "123456",
+      "url_profile": "https://betapto.edu.vn/upload/2025/08/avatar-nguoi-la-03.webp",
+      "short_bio": "Android Developer"
+    },
+    {
+      "id": 6,
+      "uname": "Nguyen Van F",
+      "password": "123456",
+      "url_profile": "https://betapto.edu.vn/upload/2025/08/avatar-nguoi-la-03.webp",
+      "short_bio": "Android Developer"
+    }
+  ]
+}
+betapto.edu.vn
+Compose
